@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Agroconnect</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to an external CSS file -->
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #e0f2e9;
+        }
+
+        header {
+            display: flex;
+            flex-direction: column; /* Stack the logo and nav vertically */
+            align-items: center;
+            padding: 10px 20px; /* Shorter padding for smaller header */
+            background-color: #4caf50;
+            color: white;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .logo h1 {
+            margin: 0;
+            font-size: 2em; /* Adjust the logo font size */
+        }
+
+        /* Search bar styles */
+        .search-bar {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .search-bar input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+            font-size: 1em;
+            margin-right: 10px;
+        }
+
+        .search-bar button {
+            background-color: #388e3c;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            color: white;
+        }
+
+        /* Nav styles */
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            position: relative;
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center; /* Align icon and text vertically */
+        }
+
+        nav ul li a:hover {
+            background-color: #388e3c;
+            border-radius: 5px;
+        }
+
+        nav ul li a i {
+            margin-right: 8px; /* Add space between icon and text */
+        }
+
+        /* Dropdown styles */
+        .dropdown {
+            display: none;
+            position: absolute;
+            background-color: #4caf50;
+            min-width: 160px;
+            z-index: 1;
+            border-radius: 5px;
+        }
+
+        nav ul li:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .dropdown a:hover {
+            background-color: #388e3c;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .welcome-section {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .welcome-section h1 {
+            font-size: 2.5em;
+            margin: 10px 0;
+        }
+
+        .welcome-section p {
+            font-size: 1.2em;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #4caf50;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin-left: 0;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+    <!-- Link to an external icon library, like Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <h1>Agroconnect</h1>
+    </div>
+    <div class="search-bar">
+        <input type="text" placeholder="Search Agroconnect">
+        <button><i class="fas fa-search"></i></button>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="marketplace.html"><i class="fas fa-store"></i> Marketplace</a></li>
+            <li><a href="user-profile.html"><i class="fas fa-user"></i> Profile</a></li>
+            <li><a href="messages.html"><i class="fas fa-envelope"></i> Messages</a></li>
+            <li>
+                <a href="#"><i class="fas fa-cog"></i> Services</a>
+                <div class="dropdown">
+                    <a href="settings.html">Settings</a>
+                    <a href="login.html">Logout</a>
+                    <a href="ad-center.html">Ad Center</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="welcome-section">
+        <div class="welcome-container">
+            <h1>Welcome to Agroconnect!</h1>
+            <p>Connect, trade, and share with fellow farmers.</p>
+            <button><a href="marketplace.html" style="color: white; text-decoration: none;">Start Exploring</a></button>
+        </div>
+    </section>
+
+    <!-- Post Creation Area -->
+    <div class="post-creation">
+        <h3>Create a Post</h3>
+        <textarea id="postContent" rows="4" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;" placeholder="What's on your mind?"></textarea>
+        <button id="postButton" style="background-color: #4caf50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin-top: 10px;">Post</button>
+    </div>
+
+    <!-- Feed Area -->
+    <div id="feed">
+        <h3>Feed</h3>
+        <!-- Posts will be dynamically added here -->
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2024 Agroconnect. All rights reserved.</p>
+</footer>
+
+<script>
+    // Check if the user name is already stored in localStorage
+    let userName = localStorage.getItem("userName");
+
+    // If no name is stored, prompt the user to enter their name
+    if (!userName) {
+        userName = prompt("Please enter your name:");
+
+        // If the user entered a name, store it in localStorage
+        if (userName) {
+            localStorage.setItem("userName", userName);
+        } else {
+            alert("You must enter a name to use Agroconnect.");
+            window.location.reload();
+        }
+    }
+
+    document.getElementById("postButton").addEventListener("click", function() {
+        const postContent = document.getElementById("postContent").value;
+
+        if (postContent.trim() !== "") {
+            const post = document.createElement("div");
+            post.className = "post";
+            post.innerHTML = `
+                <h4>${userName}</h4>
+                <p class="postText">${postContent}</p>
+                <button class="editBtn">Edit</button>
+                <button class="deleteBtn">Delete</button>
+            `;
+            
+            document.getElementById("feed").appendChild(post);
+            document.getElementById("postContent").value = "";
+
+            // Edit post functionality
+            post.querySelector(".editBtn").addEventListener("click", function() {
+                const postText = post.querySelector(".postText");
+                const newContent = prompt("Edit your post:", postText.textContent);
+                if (newContent) {
+                    postText.textContent = newContent;
+                }
+            });
+
+            // Delete post functionality
+            post.querySelector(".deleteBtn").addEventListener("click", function() {
+                post.remove();
+            });
+
+        } else {
+            alert("Please enter some content for your post.");
+        }
+    });
+</script>
+
+</body>
+</html>

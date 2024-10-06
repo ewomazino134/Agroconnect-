@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Agroconnect</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f2e9;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #4caf50;
+        }
+        .welcome-message {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            color: #388e3c;
+        }
+        form {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #388e3c;
+        }
+        .alternate-login {
+            text-align: center;
+            margin: 15px 0;
+        }
+        .google-signin {
+            background-color: #db4437;
+        }
+        .google-signin:hover {
+            background-color: #c13527;
+        }
+        .forgot-password {
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Login</h1>
+    <div class="welcome-message">Welcome back to Agroconnect!</div>
+    <form id="loginForm">
+        <label for="username">Preferred Username:</label>
+        <input type="text" id="username" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" required>
+        
+        <button type="submit">Login</button>
+        
+        <div class="alternate-login">
+            <button type="button" class="google-signin">Sign in with Google</button>
+        </div>
+        <div class="forgot-password">
+            <button type="button" id="forgotPasswordBtn">Forgot Password?</button>
+        </div>
+    </form>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById("username").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            const storedUsername = localStorage.getItem("userName");
+            const storedEmail = localStorage.getItem("userEmail");
+            const storedPassword = localStorage.getItem("userPassword");
+
+            // Check if the entered credentials match the stored ones
+            if ((username === storedUsername || email === storedEmail) && password === storedPassword) {
+                alert("Login successful!");
+                window.location.href = "home.html"; // Redirect to home page
+            } else {
+                alert("Invalid username/email or password. Please try again.");
+            }
+        });
+
+        document.getElementById("forgotPasswordBtn").addEventListener("click", function() {
+            const emailOrPhone = prompt("Enter your registered email or phone number:");
+
+            const storedEmail = localStorage.getItem("userEmail");
+            const storedPhone = localStorage.getItem("userPhone");
+
+            if (emailOrPhone === storedEmail || emailOrPhone === storedPhone) {
+                // Here you would send the reset code to the user's email or phone
+                alert("A reset code has been sent to your registered email or phone number.");
+                // Implement email/SMS service here
+            } else {
+                alert("The entered email or phone number is not registered.");
+            }
+        });
+    </script>
+</body>
+</html>

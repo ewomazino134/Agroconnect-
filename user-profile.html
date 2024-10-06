@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - Agroconnect</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #e0f2e9;
+        }
+
+        header {
+            display: flex;
+            flex-direction: column; /* Stack the logo and nav vertically */
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+        }
+
+        .logo h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        /* Search bar styles */
+        .search-bar {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .search-bar input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+            font-size: 1em;
+            margin-right: 10px;
+        }
+
+        .search-bar button {
+            background-color: #388e3c;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            color: white;
+        }
+
+        /* Nav styles */
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center; /* Align icon and text vertically */
+        }
+
+        nav ul li a:hover {
+            background-color: #388e3c;
+            border-radius: 5px;
+        }
+
+        nav ul li a i {
+            margin-right: 8px; /* Add space between icon and text */
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-header img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #4caf50;
+        }
+
+        .profile-header h2 {
+            margin-top: 10px;
+            font-size: 1.8em;
+        }
+
+        .profile-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .profile-info div {
+            background-color: white;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            flex-basis: 45%;
+        }
+
+        .post-creation {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .post-creation textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        .post-creation input[type="file"] {
+            margin-bottom: 10px;
+        }
+
+        .post {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .post img, .post video {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        .friends-list, .user-posts {
+            margin-bottom: 20px;
+        }
+
+        .friends-list ul, .user-posts ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .friends-list ul li, .user-posts ul li {
+            background-color: white;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .profile-info div {
+                flex-basis: 100%;
+            }
+        }
+    </style>
+    <!-- Link to an external icon library, like Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <h1>Agroconnect</h1>
+    </div>
+    <div class="search-bar">
+        <input type="text" placeholder="Search Agroconnect">
+        <button><i class="fas fa-search"></i></button>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="marketplace.html"><i class="fas fa-store"></i> Marketplace</a></li>
+            <li><a href="messages.html"><i class="fas fa-envelope"></i> Messages</a></li>
+            <li>
+                <a href="#"><i class="fas fa-cog"></i> Services</a>
+                <div class="dropdown">
+                    <a href="settings.html">Settings</a>
+                    <a href="login.html">Logout</a>
+                    <a href="ad-center.html">Ad Center</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="profile-header">
+        <!-- Profile Picture -->
+        <img id="profilePicture" src="default-avatar.png" alt="Profile Picture">
+        <input type="file" id="profilePicInput" style="display: none;" accept="image/*">
+        <button onclick="document.getElementById('profilePicInput').click()">Change Profile Picture</button>
+
+        <!-- Username -->
+        <h2 id="userNameDisplay"></h2>
+    </section>
+
+    <!-- Profile Information -->
+    <section class="profile-info">
+        <div>
+            <h3>Basic Info</h3>
+            <p><strong>Email:</strong> <span id="userEmailDisplay"></span></p>
+            <p><strong>Location:</strong> <span id="userLocationDisplay"></span></p>
+        </div>
+        <div>
+            <h3>Friends</h3>
+            <div class="friends-list">
+                <ul id="friendsList">
+                    <!-- Friends will be dynamically added here -->
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Post Creation Area -->
+    <section class="post-creation">
+        <h3>Create a Post</h3>
+        <textarea id="postContent" rows="4" placeholder="What's on your mind?"></textarea>
+        <input type="file" id="postMedia" accept="image/*,video/*">
+        <button id="postButton" style="background-color: #4caf50; color: white; padding: 10px 20px; border: none; border-radius: 5px;">Post</button>
+    </section>
+
+    <!-- User's Posts -->
+    <section class="user-posts">
+        <h3>Your Posts</h3>
+        <ul id="userPosts">
+            <!-- Posts will be dynamically added here -->
+        </ul>
+    </section>
+
+</main>
+
+<script>
+    // Simulating the user data for demo purposes
+    let userData = {
+        name: localStorage.getItem("userName") || "John Doe",
+        email: localStorage.getItem("email") || "omaduvieewoma.com",
+        location: "Port Harcourt, NG",
+        friends: ["Jane Smith", "Mark Johnson", "Lucy Brown"],
+        posts: []
+    };
+
+    // Load user data on profile page load
+    document.getElementById("userNameDisplay").innerText = userData.name;
+    document.getElementById("userEmailDisplay").innerText = userData.email;
+    document.getElementById("userLocationDisplay").innerText = userData.location;
+
+    // Populate friends list
+    const friendsList = document.getElementById("friendsList");
+    userData.friends.forEach(friend => {
+        const li = document.createElement("li");
+        li.innerText = friend;
+        friendsList.appendChild(li);
+    });
+
+    // Handle profile picture upload
+    document.getElementById("profilePicInput").addEventListener("change", function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById("profilePicture").src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Handle post creation
+    document.getElementById("postButton").addEventListener("click", function() {
+        const postContent = document.getElementById("postContent").value;
+        const postMedia = document.getElementById("postMedia").files[0];
+
+        if (postContent.trim() === "" && !postMedia) {
+            alert("Please add some content or media to post.");
+            return;
+        }
+
+        const post = {
+            content: postContent,
+            media: null,
+            type: null
+        };
+
+        if (postMedia) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                post.media = e.target.result;
+                post.type = postMedia.type.startsWith("image") ? "image" : "video";
+                addPostToPage(post);
+            };
+            reader.readAsDataURL(postMedia);
+        } else {
+            addPostToPage(post);
+        }
+
+        userData.posts.push(post);
+        document.getElementById("postContent").value = "";
+        document.getElementById("postMedia").value = "";
+    });
+
+    // Function to display a post on the page
+    function addPostToPage(post) {
+        const postList = document.getElementById("userPosts");
+        const postItem = document.createElement("li");
+
+        postItem.className = "post";
+        postItem.innerHTML = `
+            <p>${post.content}</p>
+        `;
+
+        if (post.media) {
+            if (post.type === "image") {
+                postItem.innerHTML += `<img src="${post.media}" alt="User Post Image">`;
+            } else if (post.type === "video") {
+                postItem.innerHTML += `<video controls>
+                    <source src="${post.media}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>`;
+            }
+        }
+
+        postList.appendChild(postItem);
+    }
+</script>
+
+</body>
+</html>
